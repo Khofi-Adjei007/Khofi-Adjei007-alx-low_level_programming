@@ -1,3 +1,4 @@
+#include <stdio.h>
 /**
  * *Description: main - A program that prints a line using the puts function
  * *Return: 0 if Success
