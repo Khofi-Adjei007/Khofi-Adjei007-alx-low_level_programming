@@ -4,4 +4,4 @@
  * Return: Always 0.
  */
 
-write(0, "_putchar\n", 6)
+write("_putchar\n")
