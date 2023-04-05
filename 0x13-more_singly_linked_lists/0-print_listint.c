@@ -3,9 +3,12 @@
 #include <stdio.h>
 #include "lists.h"
 
-/**
+/*
 * Only print listint
+*
+*
 * Description: print all the nodes
+* And Return: Number of  nodes
 */
 
 size_t print_listint(const listint_t *h)
