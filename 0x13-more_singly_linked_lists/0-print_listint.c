@@ -5,7 +5,7 @@
 
 /*
 * Only print listint
-*
+* print_listint - prints list nodes
 *
 * Description: print all the nodes
 * And Return: Number of  nodes
