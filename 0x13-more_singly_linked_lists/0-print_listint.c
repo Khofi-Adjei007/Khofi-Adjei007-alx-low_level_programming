@@ -4,8 +4,8 @@
 #include "lists.h"
 
 /*
-* Only print listint
-* print_listint - prints list nodes
+* print_listint - prints list
+* Return: size_t
 *
 * Description: print all the nodes
 * And Return: Number of  nodes
