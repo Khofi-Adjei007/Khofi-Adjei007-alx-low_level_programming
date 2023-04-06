@@ -4,7 +4,8 @@
 #include "lists.h"
 
 /*
-* print_listint - prints list
+* print_listint - function with one argument
+* @h: pointer to struct
 * Return: size_t
 *
 * Description: print all the nodes
