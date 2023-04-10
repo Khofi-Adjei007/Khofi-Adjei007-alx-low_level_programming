@@ -1,43 +1,56 @@
+
 #include <stdio.h>
 #include "main.h"
 
-
-unsigned int binary_to_uint(const char *b)
-
-{
-unsigned int dec, size, i, exp;
-if (!b)
-return (0);
-size = _strlen(b);
-i = 0;
-dec = 0;
-exp = size - 1;
-
-while (b[i])
-{
-if (b[i] == '1')
-dec += power(2, exp);
-else if (b[i] != '0')
-return (0);
-exp--;
-i++;
-}
-return (dec);
-}
+int _pow_recursion(int x, int y);
 
 /**
-* _strlen - lenght of a string.
-* @s: This is a pointer to a character
-* Return: The Acquired Lenght.
+* binary_to_uint - function with one argument
+* @b: pointer to character
+* Description: converts a binary number to an unsigned int
+* Return: converted number or 0 if NULL
 */
 
-unsigned int _strlen(const char *s)
-{
-unsigned int i = 0;
 
-while (*(s + i) != '\0')
+unsigned int binary_to_uint(const char *b)
 {
-i++;
+unsigned int value = 0;
+unsigned int power = 0;
+int count = 0;
+
+if (!b)
+return (0);
+/* Get length of string */
+while (b[count] != '\0')
+{
+if (b[count] != '0' && b[count] != '1')
+	return (0);
+count++;
 }
-return (i);
+count -= 1;
+while (count >= 0)
+{
+if (b[count] == '1')
+	value += _pow_recursion(2, power);
+power++;
+count--;
+}
+return (value);
+}
+
+
+/**
+* _pow_recursion - two function argument
+* Description: returns the value of x raised to power of y
+* Return: value of x
+*/
+
+int _pow_recursion(int x, int y)
+{
+if (y == 0)
+return (1);
+else if (y < 0)
+return (-1);
+else
+return (x * _pow_recursion(x, y - 1));
 }
