@@ -4,7 +4,7 @@
 #include <fcntl.h>
 
 /**
-* append_text_to_file : this apends the text to file
+* append_text_to_file - this apends the text to file
 * @filename: this is the path to file
 * @text_content: this is the content
 * Return: 1 if pass or -1 if fail
