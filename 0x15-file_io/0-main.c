@@ -4,6 +4,8 @@
 
 /**
 * main - check the code
+* @ac - check check
+* @av - check in two
 * Return: Always 0.
 */
 

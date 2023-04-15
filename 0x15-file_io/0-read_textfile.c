@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>   /* Added missing header for open() function */
-#include <unistd.h> /* Add missing header for read(), write(), and close() functions */
+#include <unistd.h>
 #include "main.h"
 
 /**
@@ -15,23 +15,20 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int file;  /* Changed type from ssize_t to int, as open() returns int */
-	ssize_t let, w;  /* Changed type from ssize_t to ssize_t, as read() and write() return ssize_t */
+	ssize_t let, w;
 	char *text;
 
 	if (filename == NULL)
 		return (0);
-
 	text = malloc(letters);
 	if (text == NULL)
 		return (0);
-
 	file = open(filename, O_RDONLY);
 	if (file == -1)
 	{
 		free(text);
 		return (0);
 	}
-
 	let = read(file, text, letters);
 	if (let == -1)
 	{
@@ -39,7 +36,6 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		close(file);
 		return (0);
 	}
-
 	w = write(STDOUT_FILENO, text, let);
 	if (w == -1)
 	{
@@ -47,10 +43,8 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		close(file);
 		return (0);
 	}
-
 	free(text);
 	close(file);
-
 	return (w);
 }
 

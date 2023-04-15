@@ -1,68 +1,45 @@
-#include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>   /* Added missing header for open() function */
 #include <unistd.h>
-#include <fcntl.h>
+#include "main.h"
 
 /**
-* create_file -This Appends To The File
-* @filename: This is the path to the fil
-* @text_content: Here is the content of it
-* Return: Number of Characters read.
-*/
-
+ * create_file - creates a file with the given content.
+ * @filename: pointer to the filename string
+ * @text_content: content to be written to the file
+ *
+ * Description: Create a function that creates a file with the given content.
+ *
+ * Return: 1 on success, -1 on failure
+ */
 
 int create_file(const char *filename, char *text_content)
 {
-int fd;
-ssize_t w;
-int size;
-char *mem;
+	int file, i = 0;
 
-if (!filename)
-{
-return (-1);
-}
-fd = open(filename, O_RDWR | O_CREAT | O_TRUNC, 0600);
-if (fd == -1)
-return (-1);
-if (!text_content)
-{
-close(fd);
-return (1);
-}
-size = _strlen(text_content);
-mem = malloc(sizeof(char) * size);
-if (!mem)
-{
-close(fd);
-return (-1);
-}
-w = write(fd, text_content, size);
-if (w == -1)
-{
-close(fd);
-free(mem);
-return (-1);
-}
-close(fd);
-free(mem);
-return (1);
-}
+	if (filename == NULL)
+		return (-1);
 
-/**
-* _strlen - lenght of string
-* @s: is a pointer to a character
-* Return: 0.
-*/
+	if (text_content == NULL)
+		text_content = "";
 
-int _strlen(const char *s)
-{
-int i = 0;
+	while (text_content[i] != '\0')
+	{
+		i++;
+	}
 
-while (*(s + i) != '\0')
-{
-i++;
-}
+	file = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
+	if (file == -1)
+		return (-1);
 
-return (i);
+	if (write(file, text_content, i) == -1)
+	{
+		close(file);
+		return (-1);
+	}
+
+	close(file);
+
+	return (1);
 }
