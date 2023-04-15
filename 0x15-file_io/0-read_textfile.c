@@ -1,53 +1,56 @@
-#include <fcntl.h>
-#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>   /* Added missing header for open() function */
+#include <unistd.h> /* Add missing header for read(), write(), and close() functions */
 #include "main.h"
 
 /**
-* read_textfile - function that has two set of arguments
-* @filename: name of the file
-* @letters: number of letters
-* Description: reads a text file and prints
-* Return: 0 if filename is NULL or write fails
-*/
-
+ * read_textfile - reads a text file and prints it to standard output
+ * @filename: pointer to the filename string
+ * @letters: number of letters to read and print
+ *
+ * Return: the actual number of letters read and printed, 0 otherwise
+ */
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-int fd = 0;
-int reader = 0;
-int output = 0;
-char *buffer;
+	int file;  /* Changed type from ssize_t to int, as open() returns int */
+	ssize_t let, w;  /* Changed type from ssize_t to ssize_t, as read() and write() return ssize_t */
+	char *text;
 
-if (filename == NULL)
-	return (0);
+	if (filename == NULL)
+		return (0);
 
-buffer = malloc(letters);
-if (buffer == NULL)
-	return (0);
+	text = malloc(letters);
+	if (text == NULL)
+		return (0);
 
-fd = open(filename, O_RDONLY);
-if (fd == -1)
-{
-	free(buffer);
-	return (0);
+	file = open(filename, O_RDONLY);
+	if (file == -1)
+	{
+		free(text);
+		return (0);
+	}
+
+	let = read(file, text, letters);
+	if (let == -1)
+	{
+		free(text);
+		close(file);
+		return (0);
+	}
+
+	w = write(STDOUT_FILENO, text, let);
+	if (w == -1)
+	{
+		free(text);
+		close(file);
+		return (0);
+	}
+
+	free(text);
+	close(file);
+
+	return (w);
 }
 
-reader = read(fd, buffer, letters);
-if (reader == -1)
-{
-	free(buffer);
-	return (0);
-}
-
-output = write(STDOUT_FILENO, buffer, reader);
-if (output == -1 || output != reader)
-{
-	free(buffer);
-	return (0);
-}
-close(fd);
-free(buffer);
-return (output);
-}
