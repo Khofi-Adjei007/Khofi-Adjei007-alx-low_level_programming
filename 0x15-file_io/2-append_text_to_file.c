@@ -1,62 +1,37 @@
+#include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include "main.h"
-#include <fcntl.h>
 
 /**
-* append_text_to_file - this apends the text to file
-* @filename: this is the path to file
-* @text_content: this is the content
-* Return: 1 if pass or -1 if fail
+* append_text_to_file - that appends text at the end of a file
+* @filename: variable pointer
+* @text_content: content file
+* Description: function that appends text at the end of a file
+* Return: 1 on success, -1 on failure
 */
-
 
 int append_text_to_file(const char *filename, char *text_content)
 {
-int fd;
-ssize_t w;
-int size;
+int i = 0, file;
 
-if (!filename)
+if (filename == NULL)
 return (-1);
 
-fd = open(filename, O_WRONLY | O_APPEND);
+if (text_content == NULL)
+text_content = "";
 
-if (fd == -1)
-return (-1);
-
-if (!text_content)
-{
-close(fd);
-return (1);
-}
-
-size = _strlen(text_content);
-w = write(fd, text_content, size);
-
-if (w == -1)
-{
-close(fd);
-return (-1);
-}
-close(fd);
-return (1);
-}
-
-/**
-* _strlen - len
-* @s: is a pointer to a char
-* Return: Always 0.
-*/
-
-int _strlen(const char *s)
-{
-int i = 0;
-
-while (*(s + i) != '\0')
+while (text_content[i] != '\0')
 {
 i++;
 }
 
-return (i);
+file = open(filename, O_WRONLY | O_APPEND);
+
+if (file == -1)
+return (-1);
+
+write(file, text_content, i);
+
+return (1);
 }
+
