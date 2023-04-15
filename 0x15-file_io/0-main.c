@@ -3,9 +3,9 @@
 #include "main.h"
 
 /**
-* main - check the code
-* @ac - check check
-* @av - check in two
+* main - check the code* main - Entry point of the program.
+* @ac: Number of command-line arguments.
+* @av: Array of command-line argument strings.
 * Return: Always 0.
 */
 
