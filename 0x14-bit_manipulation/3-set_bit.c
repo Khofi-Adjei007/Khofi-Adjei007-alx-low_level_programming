@@ -1,18 +1,34 @@
+#include <stdio.h>
 #include "main.h"
 
 /**
-* int set_bit - a function that has two arguments
-* @n: a pointer to value
-* @index: the position to change bit
-* Description: sets the value of a bit to 1 at a given index
-* Return: 1 if pass and -1 if fail
+* main - entry point for program
+*
+* This program demonstrates the functionality of the `set_bit` function.
+* It sets a bit at a given index in an unsigned long int variable and
+* prints the updated value of the variable.
+*
+* Return: Always 0 indicating successful execution of the program.
 */
-int set_bit(unsigned long int *n, unsigned int index)
+
+int main(void)
 {
-if (index >= (sizeof(*n) * 8))
-return (-1);
+unsigned long int n;
 
-*n |= 1 << index;
-return (1);
+/* Initialize variable n to 1024 and set bit at index 5 */
+n = 1024;
+set_bit(&n, 5);
+printf("%lu\n", n);
 
+/* Initialize variable n to 0 and set bit at index 10 */
+n = 0;
+set_bit(&n, 10);
+printf("%lu\n", n);
+
+/* Initialize variable n to 98 and set bit at index 0 */
+n = 98;
+set_bit(&n, 0);
+printf("%lu\n", n);
+
+return (0);
 }
