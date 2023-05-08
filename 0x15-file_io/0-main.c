@@ -3,12 +3,10 @@
 #include "main.h"
 
 /**
-* main - check the code* main - Entry point of the program.
-* @ac: Number of command-line arguments.
-* @av: Array of command-line argument strings.
+* main - check the code
+*
 * Return: Always 0.
 */
-
 int main(int ac, char **av)
 {
 ssize_t n;
