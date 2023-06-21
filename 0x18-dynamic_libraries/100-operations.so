@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+/* Prints "Hello, <name>!" to the standard output */
+void say_hello(char *name)
+{
+    /* Implement the say_hello function here */
+    printf("Hello, %s!\n", name);
+}
+
+/* Adds two integers and returns the result */
+int add(int a, int b)
+{
+    /* Implement the add function here */
+    return (a + b);
+}
+
+/* Multiplies two floating-point numbers and returns the result */
+float multiply(float a, float b)
+{
+    /* Implement the multiply function here */
+    return (a * b);
+}
