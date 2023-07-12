@@ -1,4 +1,7 @@
 #include "hash_tables.h"
+#include <stddef.h>
+#include <string.h>
+#include <stdlib.h>
 
 /**
 * hash_table_set - Adds an element to a hash table.
@@ -8,7 +11,6 @@
 *
 * Return: 1 if successful, 0 otherwise.
 */
-
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 unsigned long int index;
