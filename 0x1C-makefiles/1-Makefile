@@ -1,0 +1,13 @@
+# Makefile for building the "holberton" executable
+
+# Compiler to be used
+CC = gcc
+
+# Source files
+SRC = main.c school.c
+
+# Default rule
+# This rule is executed when you run "make" without specifying a target.
+# It builds the "holberton" executable using the specified compiler and source files.
+all:
+	$(CC) $(SRC) -o school

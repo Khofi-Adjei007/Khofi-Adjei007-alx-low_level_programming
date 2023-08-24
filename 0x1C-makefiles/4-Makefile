@@ -1,0 +1,45 @@
+# Makefile for building the "holberton" executable
+
+# Compiler to be used
+CC = gcc
+
+# Source files
+SRC = main.c school.c
+
+# Object files
+# Replace .c extension with .o to create corresponding object files
+OBJ = $(SRC:.c=.o)
+
+# Executable name
+# This will be the name of the final executable
+NAME = school
+
+# Command to remove files
+RM = rm -f
+
+# Compilation flags
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+# Default rule
+# This rule is executed when you run "make" without specifying a target.
+# It builds the "school" executable using the specified compiler, object files, and name.
+all: $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
+# Clean rule
+# This rule removes temporary and generated files.
+clean:
+	$(RM) *~ $(NAME)
+
+# Object clean rule
+# This rule removes the compiled object files.
+oclean:
+	$(RM) $(OBJ)
+
+# Full clean rule
+# This rule combines the "clean" and "oclean" rules.
+fclean: clean oclean
+
+# Rebuild rule
+# This rule combines the "oclean" and "all" rules to rebuild everything.
+re: oclean all
