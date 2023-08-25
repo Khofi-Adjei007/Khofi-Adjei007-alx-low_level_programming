@@ -1,35 +1,14 @@
-# Compiler to use
 CC = gcc
-
-# Source files
 SRC = main.c holberton.c
-
-# Object files to be generated from source files
 OBJ = $(SRC:.c=.o)
-
-# Name of the executable
 NAME = holberton
-
-# Compiler flags
 CFLAGS = -Wall -Werror -Wextra -pedantic
-
-# Targets that don't correspond to file names
 .PHONY: all clean oclean fclean re
-
-# Default target, builds the executable
 all: m.h $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
-
-# Clean up generated files and executables
 clean:
 	$(RM) *~ $(NAME)
-
-# Clean only object files
 oclean:
 	$(RM) $(OBJ)
-
-# Clean everything, including executables and object files
 fclean: clean oclean
-
-# Rebuild the project from scratch
 re: oclean all
