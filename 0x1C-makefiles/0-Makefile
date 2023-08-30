@@ -1,9 +1,7 @@
-# This is a Makefile for compiling the program "holberton"
+# This is a Makefile for compiling the program "school"
 # It specifies how to compile the source files and generate the executable.
 
 # The first line specifies the target "all" and lists the dependencies.
-# In this case, the dependencies are "main.c" and "holberton.c".
-all: main.c holberton.c
-    # The next line specifies the compilation command using gcc.
-    # It compiles "main.c" and "holberton.c" into an executable named "holberton".
-    gcc main.c holberton.c -o holberton
+# In this case, the dependencies are "main.c" and "school.c".
+all: main.c school.c
+	gcc main.c school.c -o school
