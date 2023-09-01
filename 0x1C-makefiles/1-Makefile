@@ -1,15 +1,9 @@
-# This is a Makefile for compiling the program "school"
-# It specifies how to compile the source files and generate the executable.
-
-# Compiler
+# Define the compiler to be used
 CC = gcc
 
-# Source files
+# List of source files to be compiled
 SRC = main.c school.c
 
-# The first line specifies the target "all" and lists the dependencies.
-# In this case, the dependencies are the source files listed in $(SRC).
+# Define the 'all' target, which is the default target that will be built when 'make' is invoked
 all: $(SRC)
-	# The next line specifies the compilation command using $(CC).
-	# It compiles the source files listed in $(SRC) into an executable named "school".
 	$(CC) $(SRC) -o school
